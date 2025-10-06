@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Criativo | Sites Personalizados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --light: #f5f5f5;
+            --text: #333;
+            --text-light: #fff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--highlight);
+            color: var(--text-light);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--highlight);
+            color: var(--highlight);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--highlight);
+            color: var(--text-light);
+        }
+
+        /* Header e Navegação */
+        header {
+            background-color: var(--primary);
+            color: var(--text-light);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--highlight);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text-light);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(233, 69, 96, 0.1) 0%, transparent 70%);
+            animation: pulse 15s infinite linear;
+        }
+
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease 0.3s forwards;
+        }
+
+        .hero-btns {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease 0.6s forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 40px auto;
+            border: 5px solid var(--highlight);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(233, 69, 96, 0.5);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 1s ease 0.9s forwards;
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .profile-img::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, var(--highlight), var(--accent), var(--primary));
+            z-index: -1;
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Serviços */
+        .services {
+            background-color: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--highlight);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--highlight), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--highlight);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* Sobre */
+        .about {
+            background-color: var(--secondary);
+            color: var(--text-light);
+        }
+
+        .about h2 {
+            color: var(--text-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Preços */
+        .pricing {
+            background-color: var(--light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .price-card.featured {
+            transform: scale(1.05);
+            border: 2px solid var(--highlight);
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .price-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .price-header {
+            margin-bottom: 30px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin: 20px 0;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .price-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contato */
+        .contact {
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+
+        .contact h2 {
+            color: var(--text-light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--highlight);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+        }
+
+        .form-control:focus {
+            outline: 2px solid var(--highlight);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: var(--text-light);
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h3 {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--highlight);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--highlight);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--highlight);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .price-card.featured {
+                transform: scale(1);
+            }
+            
+            .price-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            section {
+                padding: 60px 20px;
+            }
+        }
+
+        /* Animações extras */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">Portfólio<span>Criativo</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#pricing">Preços</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Criando Experiências Digitais Memoráveis</h1>
+                <p>Transformo suas ideias em sites personalizados que encantam e conectam pessoas</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn">Ver Serviços</a>
+                    <a href="#contact" class="btn btn-secondary">Entre em Contato</a>
+                </div>
+                <div class="profile-img float">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Foto de perfil">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Meus Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Cartinhas de Amor ou Amizade</h3>
+                    <p>Sites personalizados para expressar sentimentos especiais de forma única e memorável.</p>
+                    <a href="#" class="btn btn-secondary contact-btn">Solicitar Orçamento</a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <h3>Declarações Personalizadas</h3>
+                    <p>Crio páginas web especiais para declarações emocionantes e momentos importantes.</p>
+                    <a href="#" class="btn btn-secondary contact-btn">Solicitar Orçamento</a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <h3>Convites de Aniversário</h3>
+                    <p>Convites digitais criativos e interativos para tornar sua celebração ainda mais especial.</p>
+                    <a href="#" class="btn btn-secondary contact-btn">Solicitar Orçamento</a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Trabalhos Escolares</h3>
+                    <p>Apresentações digitais profissionais para trabalhos acadêmicos e projetos escolares.</p>
+                    <a href="#" class="btn btn-secondary contact-btn">Solicitar Orçamento</a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Portfólios Criativos</h3>
+                    <p>Apresente seu trabalho de forma única e profissional com um portfólio personalizado.</p>
+                    <a href="#" class="btn btn-secondary contact-btn">Solicitar Orçamento</a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Convites para Eventos</h3>
+                    <p>Convites digitais para casamentos, formaturas e outros eventos especiais.</p>
+                    <a href="#" class="btn btn-secondary contact-btn">Solicitar Orçamento</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Sou um desenvolvedor web apaixonado por criar experiências digitais únicas e memoráveis. Com mais de 5 anos de experiência, especializo-me em desenvolver sites personalizados que contam histórias e criam conexões emocionais.</p>
+                    <p>Minha missão é transformar suas ideias em realidade digital, criando sites que não apenas impressionam visualmente, mas também proporcionam uma experiência envolvente para seus visitantes.</p>
+                    <p>Acredito que cada projeto é único e merece atenção especial, por isso trabalho próximo a cada cliente para garantir que o resultado final supere suas expectativas.</p>
+                    <div class="skills">
+                        <span class="skill">HTML5</span>
+                        <span class="skill">CSS3</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">Design Responsivo</span>
+                        <span class="skill">UI/UX Design</span>
+                        <span class="skill">Animações CSS</span>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat fade-in">
+                        <h3>50+</h3>
+                        <p>Projetos Concluídos</p>
+                    </div>
+                    <div class="stat fade-in">
+                        <h3>5+</h3>
+                        <p>Anos de Experiência</p>
+                    </div>
+                    <div class="stat fade-in">
+                        <h3>100%</h3>
+                        <p>Clientes Satisfeitos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preços -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Planos e Preços</h2>
+            <div class="pricing-grid">
+                <div class="price-card fade-in">
+                    <div class="price-header">
+                        <h3>Básico</h3>
+                        <p>Ideal para projetos simples</p>
+                    </div>
+                    <div class="price">R$ 149</div>
+                    <ul class="price-features">
+                        <li>Design personalizado</li>
+                        <li>1 página principal</li>
+                        <li>Responsivo para mobile</li>
+                        <li>Formulário de contato</li>
+                        <li>Suporte por 30 dias</li>
+                    </ul>
+                    <a href="#" class="btn contact-btn">Escolher Plano</a>
+                </div>
+                <div class="price-card featured fade-in">
+                    <div class="price-header">
+                        <h3>Profissional</h3>
+                        <p>Mais popular</p>
+                    </div>
+                    <div class="price">R$ 299</div>
+                    <ul class="price-features">
+                        <li>Design exclusivo</li>
+                        <li>Até 5 páginas</li>
+                        <li>Animações personalizadas</li>
+                        <li>Integração com redes sociais</li>
+                        <li>Suporte por 60 dias</li>
+                        <li>Otimização SEO básica</li>
+                    </ul>
+                    <a href="#" class="btn">Escolher Plano</a>
+                </div>
+                <div class="price-card fade-in">
+                    <div class="price-header">
+                        <h3>Premium</h3>
+                        <p>Para projetos especiais</p>
+                    </div>
+                    <div class="price">R$ 499</div>
+                    <ul class="price-features">
+                        <li>Design premium exclusivo</li>
+                        <li>Páginas ilimitadas</li>
+                        <li>Animações avançadas</li>
+                        <li>Integração com WhatsApp</li>
+                        <li>Suporte por 90 dias</li>
+                        <li>Otimização SEO completa</li>
+                        <li>Domínio personalizado (1 ano)</li>
+                    </ul>
+                    <a href="#" class="btn contact-btn">Escolher Plano</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Localização</h3>
+                            <p>São Paulo, Brasil</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Telefone</h3>
+                            <p>(11) 99999-9999</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contato@portfoliocriativo.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Horário de Atendimento</h3>
+                            <p>Segunda a Sexta: 9h às 18h</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Assunto</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Portfólio<span>Criativo</span></div>
+                    <p>Criando experiências digitais memoráveis que conectam pessoas e contam histórias únicas.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#pricing">Preços</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Cartinhas de Amor</a></li>
+                        <li><a href="#">Declarações</a></li>
+                        <li><a href="#">Convites de Aniversário</a></li>
+                        <li><a href="#">Trabalhos Escolares</a></li>
+                        <li><a href="#">Portfólios</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Portfólio Criativo. Todos os direitos reservados.</p>
+                <a href="admin.html" class="admin-link">Área Administrativa</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Animação de scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Botões de contato
+        document.querySelectorAll('.contact-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Contador de visitas (simulação)
+        let visitCount = localStorage.getItem('visitCount') || 0;
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        console.log(`Este site foi visitado ${visitCount} vezes`);
+
+        // Formulário de contato
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Entrarei em contato em breve.');
+            this.reset();
+        });
+
+        // Efeito de digitação no título (opcional)
+        const heroTitle = document.querySelector('.hero h1');
+        const originalText = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                heroTitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+        
+        // Iniciar efeito de digitação após a animação inicial
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
